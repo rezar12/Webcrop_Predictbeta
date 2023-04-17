@@ -57,5 +57,5 @@ mkdir -p  /pages/images
 **etape 6 :**
 lancé streamlit pour utilisé l'app :
 ```
-streamlit run App.py
+streamlit run Home.py
 ```
