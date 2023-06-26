@@ -1,4 +1,4 @@
-# PREDICTAPPbeta
+# WEBCROPPING + PREDICT APP
 
 ##### télécharger le fichier ".h5" depuis de le drive suivant : [get model save](https://drive.google.com/file/d/1tBMtW4vHkHDVKtKQu-zg3Yzl_ExBz48a/view?usp=sharing)
 
@@ -57,5 +57,5 @@ mkdir -p  /pages/images
 **etape 6 :**
 lancé streamlit pour utilisé l'app :
 ```
-streamlit run App.py
+streamlit run Home.py
 ```
