@@ -12,10 +12,13 @@ st.set_page_config(page_title="Data Upload", page_icon="📈")
 st.markdown("# Upload Data")
 st.sidebar.header("Data Upload")
 st.write(
-    """This demo illustrates a combination of plotting and animation with
-Streamlit. We're generating a bunch of random numbers in a loop for around
-5 seconds. Enjoy!"""
+    """Descriptif"""
 )
+def save_uploadedfileref(uploadedfile):
+    with open(os.path.join("pages/xlsx",uploadedfile.name),"wb") as f:
+         f.write(uploadedfile.getbuffer())
+
+
 def image_crop(New_image,nbSubdivition : int = 36) -> list:
       img  = New_image 
       sub = []
@@ -64,6 +67,7 @@ with colparametre:
         file = st.file_uploader("Import image :",type=['png','jpg'])
         subdivised = st.number_input('Subdivision number',step=1,min_value=8,max_value=36,value=36)
         filexlsx = st.file_uploader('Import excel file :',type='xlsx')
+
     sub=[]
     
     if file != None:
@@ -87,6 +91,7 @@ with colparametre:
                             excel_left_id = df.iloc[:36,-3]
                             try:
                                 saveAllImage(nom_calque,sub,excel_left_id.to_list(),imagepart)
+                                df.iloc[:subdivised,0:3].to_csv("pages/xlsx/left.csv")
                                 st.success("carry out")
                             except:
                                 st.warning('error')
@@ -112,6 +117,7 @@ with colparametre:
                             excel_rigth_id = df.iloc[36:,-3]
                             try:
                                 saveAllImage(nom_calque,sub,excel_rigth_id.to_list(),imagepart)
+                                df.iloc[subdivised:,0:3].to_csv("pages/xlsx/right.csv")
                                 st.success("carry out")
                             except:
                                 st.warning('error')
